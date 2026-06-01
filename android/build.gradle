@@ -1,21 +1,42 @@
-buildscript {
-    ext {
-        compileSdkVersion = 34
-        targetSdkVersion = 34
-        minSdkVersion = 22
-        buildToolsVersion = "34.0.0"
+apply plugin: 'com.android.application'
+
+android {
+    namespace "com.acamay.mesaitakip"
+    compileSdk 34
+
+    defaultConfig {
+        applicationId "com.acamay.mesaitakip"
+        minSdk 22
+        targetSdk 34
+        versionCode 1
+        versionName "1.0"
     }
-    repositories {
-        google()
-        mavenCentral()
+
+    signingConfigs {
+        release {
+            if (System.getenv("KEYSTORE_BASE64")) {
+                storeFile file("release.keystore")
+                storePassword System.getenv("KEYSTORE_PASSWORD")
+                keyAlias System.getenv("KEY_ALIAS")
+                keyPassword System.getenv("KEY_PASSWORD")
+            }
+        }
     }
-    dependencies {
-        classpath 'com.android.tools.build:gradle:8.2.2'
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            signingConfig signingConfigs.release
+        }
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_17
+        targetCompatibility JavaVersion.VERSION_17
     }
 }
-allprojects {
-    repositories {
-        google()
-        mavenCentral()
-    }
+
+dependencies {
+    implementation 'androidx.appcompat:appcompat:1.6.1'
+    implementation 'androidx.webkit:webkit:1.10.0'
 }
