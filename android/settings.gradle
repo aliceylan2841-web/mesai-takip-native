@@ -13,6 +13,5 @@ dependencyResolutionManagement {
     }
 }
 
-// Esas kritik satır burası, app klasörünü projeye bağlar:
-include ':app'
 rootProject.name = "android"
+include ':app'
