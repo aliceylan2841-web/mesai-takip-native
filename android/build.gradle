@@ -1,21 +1,38 @@
-buildscript {
-    repositories {
-        google()
-        mavenCentral()
+plugins {
+    id 'com.android.application'
+}
+
+android {
+    namespace "com.aliceylan.mesaitakip" // Uygulamanın paket adı
+    compileSdk 34
+
+    defaultConfig {
+        applicationId "com.aliceylan.mesaitakip"
+        minSdk 22
+        targetSdk 34
+        versionCode 1
+        versionName "1.0"
     }
-    dependencies {
-        // Android Gradle Plugin (AGP) tanımı
-        classpath 'com.android.tools.build:gradle:8.2.2'
+
+    signingConfigs {
+        release {
+            storeFile file("release.keystore")
+            storePassword System.getenv("KEYSTORE_PASSWORD") ?: "123456" // Eğer secret olarak şifre tanımlamadıysan oluştururken verdiğin şifreyi yazabilirsin
+            keyAlias "mesai"
+            keyPassword System.getenv("KEY_PASSWORD") ?: "123456"
+        }
+    }
+
+    buildTypes {
+        release {
+            signingConfig signingConfigs.release
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
     }
 }
 
-allprojects {
-    repositories {
-        google()
-        mavenCentral()
-    }
-}
-
-task clean(type: Delete) {
-    delete rootProject.buildDir
+dependencies {
+    // Projenin kullandığı temel kütüphaneler (Capacitor/Cordova kullanıyorsan otomatik eklenir)
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
 }
