@@ -1,0 +1,9 @@
+{
+  "appId": "com.acamay.mesaitakip",
+  "appName": "Mesai Takip",
+  "webDir": "public",
+  "android": {
+    "allowMixedContent": true,
+    "backgroundColor": "#f1f5fb"
+  }
+}

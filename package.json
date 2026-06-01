@@ -1,0 +1,18 @@
+{
+  "name": "mesai-takip",
+  "version": "1.0.0",
+  "description": "Mesai, izin ve maaş takip uygulaması",
+  "scripts": {
+    "build": "echo 'No build step needed'",
+    "cap:add": "npx cap add android",
+    "cap:sync": "npx cap sync android",
+    "cap:build": "npx cap sync android && cd android && ./gradlew bundleRelease"
+  },
+  "dependencies": {
+    "@capacitor/android": "^5.0.0",
+    "@capacitor/core": "^5.0.0"
+  },
+  "devDependencies": {
+    "@capacitor/cli": "^5.0.0"
+  }
+}
