@@ -1,0 +1,30 @@
+{
+  "name": "Mesai Takip Native Geliştirme Ortamı",
+  "image": "mcr.microsoft.com/devcontainers/universal:2",
+  "features": {
+    // 1. Kökten Java 17 Kurulumu (Major sürüm hatalarını kalıcı olarak engeller)
+    "ghcr.io/devcontainers/features/java:1": {
+      "version": "17",
+      "jdkDistro": "open",
+      "installGradle": "false",
+      "installMaven": "false"
+    }
+  },
+  "remoteEnv": {
+    // Android SDK ve Java Ortam Değişkenlerini Sabitliyoruz
+    "JAVA_HOME": "/usr/lib/jvm/java-17-openjdk-amd64",
+    "ANDROID_HOME": "/workspaces/mesai-takip-native/android/sdk",
+    "PATH": "${localEnv:PATH}:/usr/lib/jvm/java-17-openjdk-amd64/bin"
+  },
+  "onCreateCommand": "npm install",
+  "updateContentCommand": "mkdir -p public && echo '<!DOCTYPE html><html><head><title>Mesai Takip</title></head><body><div id=\"app\"></div></body></html>' > public/index.html",
+  "postCreateCommand": "npx cap sync android",
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "vscjava.vscode-java-pack",
+        "formulahendry.terminal"
+      ]
+    }
+  }
+}
