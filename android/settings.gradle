@@ -5,15 +5,12 @@ pluginManagement {
         gradlePluginPortal()
     }
 }
-
 dependencyResolutionManagement {
-    // Burası projenin 'settings' depolarını zorunlu tutmasını sağlar (Hatanın çözümü)
     repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
     repositories {
         google()
         mavenCentral()
     }
 }
-
-rootProject.name = 'mesai-takip-native'
+rootProject.name = "mesai-takip"
 include ':app'
