@@ -5,7 +5,9 @@ pluginManagement {
         gradlePluginPortal()
     }
 }
+
 dependencyResolutionManagement {
+    // Burası projenin 'settings' depolarını zorunlu tutmasını sağlar (Hatanın çözümü)
     repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
     repositories {
         google()
@@ -13,5 +15,5 @@ dependencyResolutionManagement {
     }
 }
 
-rootProject.name = "android"
+rootProject.name = 'mesai-takip-native'
 include ':app'
